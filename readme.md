@@ -1,7 +1,7 @@
 
 # DRF Movie App
 This app allows the user to register and login so that they can can search for their favorite movies and characters. 
-Admin can manage CRUD functions.
+Users can also control CRUD functions for both movies and characters.
 
 ## Endpoints
 1. User registration
