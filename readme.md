@@ -23,8 +23,8 @@ Admin can manage CRUD functions.
 An email is sent to the user's email when they register. User can login with their username and/or email and a password.
 
 ### CRUD Characters and Movies
-Basic CRUD operations for the models Character and Movie
+Basic CRUD operations for the models Character and Movie.
 
 ### Search Characters and Movies
 User can search a Character given their name and they can filter their search by age and movies.
-User can also search a Movie given their title and they can filter their search by genre. They can also order the result by creation date.
+User can also search a Movie given their title and they can filter their search by genre and order the results by its creation date.

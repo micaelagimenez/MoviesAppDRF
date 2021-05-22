@@ -11,12 +11,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class MovieSerializer(serializers.ModelSerializer):
+    genre = serializers.PrimaryKeyRelatedField(queryset=Genre.objects.all(), many=True)
+    
     class Meta:
         model = Movie
-        fields = ('title', 'image', 'rating', 'characters')
+        fields = ('title', 'image', 'rating', 'characters', 'genre')
         extra_kwargs = {'image': {'required': False, 'allow_null': True}}    
         
 class MovieListSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Movie
         fields = ('title', 'image', 'creation_date')

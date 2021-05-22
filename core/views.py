@@ -11,6 +11,7 @@ from rest_framework import filters
 from rest_framework.permissions import AllowAny, IsAdminUser
 from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend
+
     
 # Authentication Views
 class CustomRegisterView(RegisterView):
@@ -97,16 +98,17 @@ class SearchCharactersAPIView(ListAPIView):
     """This endpoint allows to search for any character in the database"""
     queryset = Character.objects.all()
     serializer_class = CharacterSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, ]
     search_fields = ['name']
-    filter_backends = (filters.SearchFilter,)
-    filterset_fields = ['age','movie']
+    filter_fields = ['age','movies']
     permission_classes = (AllowAny, )
     
-class SearchMovieAPIView(ListAPIView):
+class SearchMoviesAPIView(ListAPIView):
     """This endpoint allows to search for any movie in the database"""
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['title']
-    filter_backends = (filters.SearchFilter,)
     filterset_fields = ['genre']
+    ordering_fields = ['creation_date']
     permission_classes = (AllowAny, )
