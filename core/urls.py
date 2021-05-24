@@ -3,8 +3,8 @@ from core import views
 from core.views import *
 
 urlpatterns = [
-    path('register', CustomRegisterView.as_view()),
-    path('login', CustomLoginView.as_view()),
+    path('register', CustomRegisterView.as_view(), name="register"),
+    path('login', CustomLoginView.as_view(), name="login"),
     path("movies",views.ListMovieAPIView.as_view(),name="movie_list"),
     path("movie/create/", views.CreateMovieAPIView.as_view(),name="movie_create"),
     path("movie/<int:pk>/", views.DetailMovieAPIView.as_view(),name="movie_detail"),

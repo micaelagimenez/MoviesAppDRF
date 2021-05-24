@@ -1,15 +1,13 @@
 from django.shortcuts import render
-from rest_framework.generics import ListAPIView, ListCreateAPIView
-from rest_framework.generics import CreateAPIView
-from rest_framework.generics import DestroyAPIView
-from rest_framework.generics import UpdateAPIView
 from .serializers import *
 from .models import *
+from django.db.models import Q
+
 from rest_auth.views import LoginView
 from rest_auth.registration.views import RegisterView
 from rest_framework import filters
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from django.db.models import Q
+from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView
 from django_filters.rest_framework import DjangoFilterBackend
 
     
@@ -18,7 +16,7 @@ class CustomRegisterView(RegisterView):
     """This endpoint allows User to register"""
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
-        custom_data = {"message": "some message", "status": "ok"}
+        custom_data = {"message": "User created", "status": "success"}
         response.data.update(custom_data)
         return response
 
@@ -27,7 +25,7 @@ class CustomLoginView(LoginView):
     """This endpoint allows User to Login"""
     def get_response(self):
         orginal_response = super().get_response()
-        mydata = {"message": "some message", "status": "success"}
+        mydata = {"message": "User logged in", "status": "success"}
         orginal_response.data.update(mydata)
         return orginal_response
     

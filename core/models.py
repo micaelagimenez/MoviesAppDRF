@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models.fields import CharField, DateField, IntegerField
 from django.db.models.fields.files import ImageField
-
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -26,9 +25,9 @@ class Movie(models.Model):
         return self.title
 
 class Genre(models.Model):
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
     name = models.CharField(max_length=150)
-    movies = models.ManyToManyField(Movie, related_name='genre')
+    movies = models.ManyToManyField(Movie, blank=True, related_name='genre')
     
     def __str__(self):
         return self.name
