@@ -42,17 +42,11 @@ class CreateMovieAPIView(CreateAPIView):
     serializer_class = MovieSerializer
     permission_classes = (IsAuthenticated, )
 
-class UpdateMovieAPIView(UpdateAPIView):
-    """This endpoint allows to update a specific movie given its id"""
+class UpdateDeleteMovieAPIView(UpdateAPIView, DestroyAPIView):
+    """This endpoint allows to update or delete a specific movie given its id"""
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     permission_classes = (IsAuthenticated, )
-
-class DeleteMovieAPIView(DestroyAPIView):
-   """This endpoint allows to delete a specific movie given its id"""
-   queryset = Movie.objects.all()
-   serializer_class = MovieSerializer
-   permission_classes = (IsAuthenticated, )
     
 class DetailMovieAPIView(ListAPIView):
     """This endpoint shows the detail of a movie given its id"""
@@ -73,14 +67,8 @@ class CreateCharactersAPIView(CreateAPIView):
     serializer_class = CharacterSerializer
     permission_classes = (IsAuthenticated, )
 
-class UpdateCharactersAPIView(UpdateAPIView):
-    """This endpoint allows to update a specific character given its id"""
-    queryset = Character.objects.all()
-    serializer_class = CharacterSerializer
-    permission_classes = (IsAuthenticated, )
-
-class DeleteCharactersAPIView(DestroyAPIView):
-    """This endpoint allows to delete a specific character given its id"""
+class UpdateDeleteCharactersAPIView(UpdateAPIView, DestroyAPIView):
+    """This endpoint allows to update or delete a specific character given its id"""
     queryset = Character.objects.all()
     serializer_class = CharacterSerializer
     permission_classes = (IsAuthenticated, )
